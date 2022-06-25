@@ -1,0 +1,16 @@
+.table-cell {
+    display: table-cell;
+    padding-top: 8px;
+}
+
+/*@media only screen and (max-width: 700px){*/
+/*    .card-image {*/
+/*        width: 49.99999%;*/
+/*    }*/
+/*}*/
+
+/*@media only screen and (max-width: 500px){*/
+/*    .card-image {*/
+/*        width: 100%;*/
+/*    }*/
+/*}*/

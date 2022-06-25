@@ -1,0 +1,22 @@
+.table-cell {
+    display: table-cell;
+    border: 1px solid;
+    padding: 16px;
+    column-span: 2;
+}
+
+.table-cell__header {
+    font-weight: bold;
+}
+
+/*@media only screen and (max-width: 700px){*/
+/*    .card-image {*/
+/*        width: 49.99999%;*/
+/*    }*/
+/*}*/
+
+/*@media only screen and (max-width: 500px){*/
+/*    .card-image {*/
+/*        width: 100%;*/
+/*    }*/
+/*}*/

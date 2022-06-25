@@ -1,0 +1,1 @@
+export { useFetchPost } from './useFetchPost';

@@ -1,0 +1,12 @@
+.card-container {
+    width: 500px;
+    background-color: #fff;
+    transition: all 0.3s ease-in-out;
+    transform: translateY(-200px);
+    border-radius: 4px;
+    padding: 12px;
+}
+
+.card-load-placeholder {
+    min-height: 400px;
+}

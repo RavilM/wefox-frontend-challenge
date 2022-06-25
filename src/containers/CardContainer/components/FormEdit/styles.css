@@ -1,0 +1,10 @@
+.content-control-container {
+    padding-top: 6px;
+    display: grid;
+    grid-auto-flow: column;
+    grid-column-gap: 10px;
+}
+
+.content-control-container + button {
+    padding-left: 6px;
+}
