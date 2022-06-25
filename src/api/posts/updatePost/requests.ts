@@ -1,7 +1,11 @@
-import { ROOT_ENDPOINT } from '../endpoints'
-import { TCreatePost } from './types';
+import { currentPostEndpoint } from '../endpoints';
+import { TUpdatePost } from './types';
 
-export const createPost: TCreatePost = (data) => fetch(ROOT_ENDPOINT, {
-    method: 'POST',
-    body: JSON.stringify(data)
-})
+export const updatePost: TUpdatePost = ({ data, id }) =>
+  fetch(currentPostEndpoint(id), {
+    method: 'PUT',
+    body: JSON.stringify(data),
+    headers: {
+      'Content-Type': 'application/json',
+    },
+  });

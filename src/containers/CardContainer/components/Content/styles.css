@@ -1,12 +1,10 @@
-.card-container {
-    width: 500px;
-    background-color: #fff;
-    transition: all 0.3s ease-in-out;
-    transform: translateY(-200px);
-    border-radius: 4px;
-    padding: 12px;
+.content-control-container {
+    padding-top: 6px;
+    display: grid;
+    grid-auto-flow: column;
+    grid-column-gap: 10px;
 }
 
-.card-load-placeholder {
-    min-height: 400px;
+.content-control-container + button {
+    padding-left: 6px;
 }

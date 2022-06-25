@@ -1,1 +1,1 @@
-export { useFetchListPosts } from './useFetchListPosts';
+export { useFetchPost } from './useFetchPost';

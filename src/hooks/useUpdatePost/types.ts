@@ -1,10 +1,17 @@
 import { TPost } from '../../api/posts/types';
+import { TUpdatePostPayload } from '../../api/posts/updatePost';
 
-type TUseFetchPostResult = {
+export type TUpdatePayload = TUpdatePostPayload & {
+  onSuccess(): void;
+};
+
+export type TUpdate = (payload: TUpdatePayload) => void;
+
+type TUseUpdatePostResult = {
   data?: TPost;
-  refetch(): Promise<void>;
+  update: TUpdate;
   loading: boolean;
   isError: boolean;
 };
 
-export type TUseFetchPost = (id?: number) => TUseFetchPostResult;
+export type TUseUpdatePost = () => TUseUpdatePostResult;

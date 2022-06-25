@@ -1,24 +1,45 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from 'react';
+import { TableViewContainer } from './containers/TableViewContainer';
+import { useFetchListPosts } from './hooks/useFetchListPosts';
+import { Map } from './containers/MapContainer';
+import './styles.css';
+import { CreateButtonContainer } from './containers/CreateButtonContainer';
+
+enum EView {
+  TABLE = 'table',
+  MAP = 'map',
+}
 
 function App() {
+  const [view, setView] = useState<EView>(EView.TABLE);
+  const { data, isError, loading, refetch } = useFetchListPosts();
+
+  const handleChangeView = () => {
+    if (view === EView.MAP) setView(EView.TABLE);
+    else setView(EView.MAP);
+  };
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="app-container">
+      <div className="control">
+        <div>
+          Change view on{' '}
+          <button onClick={handleChangeView} type="button">
+            {view === EView.TABLE ? EView.MAP : EView.TABLE}
+          </button>
+        </div>
+        <CreateButtonContainer onCreate={refetch} />
+      </div>
+      <div className="content-container">
+        {view === EView.TABLE && (
+          <TableViewContainer
+            data={data}
+            isLoading={loading}
+            onUpdate={refetch}
+          />
+        )}
+        {view === EView.MAP && <Map data={data} />}
+      </div>
     </div>
   );
 }

@@ -1,17 +1,16 @@
-import { TPost } from '../../api/posts/types';
-import { TUpdatePostPayload } from '../../api/posts/updatePost';
+import { TChangePostData, TPost } from '../../api/posts/types';
 
-export type TUpdatePayload = TUpdatePostPayload & {
-  onSuccess(): void;
+export type TCreatePayload = TChangePostData & {
+  onSuccess: VoidFunction;
 };
 
-export type TUpdate = (payload: TUpdatePayload) => void;
+export type TCreate = (payload: TCreatePayload) => void;
 
-type TUseUpdatePostResult = {
+type TUseCreatePostResult = {
   data?: TPost;
-  update: TUpdate;
+  create: TCreate;
   loading: boolean;
   isError: boolean;
 };
 
-export type TUseUpdatePost = () => TUseUpdatePostResult;
+export type TUseCreatePost = () => TUseCreatePostResult;

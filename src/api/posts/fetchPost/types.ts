@@ -1,1 +1,1 @@
-export type TFetchListPosts = () => Promise<Response>
+export type TFetchPost = (id: number) => Promise<Response>;

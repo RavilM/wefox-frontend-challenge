@@ -3,11 +3,9 @@ module.exports = {
   extends: [
     'airbnb',
     'plugin:prettier/recommended',
-    'prettier/@typescript-eslint',
     'plugin:@typescript-eslint/recommended',
     'plugin:import/typescript',
     'plugin:security/recommended',
-    'plugin:testcafe/recommended',
   ],
   parserOptions: {
     ecmaVersion: 2018, // Allows for the parsing of modern ECMAScript features
@@ -18,7 +16,7 @@ module.exports = {
     node: true,
     jest: true,
   },
-  plugins: ['import', 'react-hooks', 'security', 'unused-imports', 'testcafe'],
+  plugins: ['import', 'react-hooks', 'security', 'unused-imports'],
   rules: {
     'prettier/prettier': [
       'error',
@@ -106,7 +104,7 @@ module.exports = {
     'consistent-return': 0,
     '@typescript-eslint/indent': 0, // Conflicts with Prettier
     '@typescript-eslint/explicit-member-accessibility': 0,
-    '@typescript-eslint/interface-name-prefix': ['error', 'always'],
+    '@typescript-eslint/interface-name-prefix': 'off',
     '@typescript-eslint/no-explicit-any': 0,
     '@typescript-eslint/no-var-requires': 0,
     'unused-imports/no-unused-imports': 'error',
@@ -121,6 +119,20 @@ module.exports = {
     'security/detect-object-injection': 0,
     'security/detect-non-literal-regexp': 0,
     'security/detect-non-literal-fs-filename': 0,
+    '@typescript-eslint/naming-convention': 'off',
+    'import/extensions': [
+      'error',
+      'ignorePackages',
+      {
+        js: 'never',
+        jsx: 'never',
+        ts: 'never',
+        tsx: 'never',
+      },
+    ],
+    camelcase: 'off',
+    'no-shadow': 'off',
+    '@typescript-eslint/no-shadow': ['error'],
   },
   settings: {
     'import/resolver': {

@@ -1,4 +1,4 @@
-import { ROOT_ENDPOINT } from '../endpoints'
-import { TFetchListPosts } from './types';
+import { currentPostEndpoint } from '../endpoints';
+import { TFetchPost } from './types';
 
-export const fetchListPosts: TFetchListPosts = () => fetch(ROOT_ENDPOINT)
+export const fetchPost: TFetchPost = (id) => fetch(currentPostEndpoint(id));

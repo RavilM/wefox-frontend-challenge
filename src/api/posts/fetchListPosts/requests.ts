@@ -1,7 +1,4 @@
-import { ROOT_ENDPOINT } from '../endpoints'
-import { TCreatePost } from './types';
+import { ROOT_ENDPOINT } from '../endpoints';
+import { TFetchListPosts } from './types';
 
-export const createPost: TCreatePost = (data) => fetch(ROOT_ENDPOINT, {
-    method: 'POST',
-    body: JSON.stringify(data)
-})
+export const fetchListPosts: TFetchListPosts = () => fetch(ROOT_ENDPOINT);

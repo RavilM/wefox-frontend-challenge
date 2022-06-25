@@ -1,10 +1,10 @@
-import {TPosts} from "../../api/posts/types";
+import { TPost } from '../../api/posts/types';
 
-type TUseFetchListPostsResult = {
-    data: TPosts;
-    refetch(): Promise<void>;
-    loading: boolean;
-    isError: boolean;
-}
+type TUseFetchPostResult = {
+  data?: TPost;
+  refetch(): Promise<void>;
+  loading: boolean;
+  isError: boolean;
+};
 
-export type TUseFetchListPosts = () => TUseFetchListPostsResult
+export type TUseFetchPost = (id?: number) => TUseFetchPostResult;

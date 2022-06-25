@@ -2,6 +2,7 @@
   "name": "wefox_challenge",
   "version": "0.1.0",
   "private": true,
+  "proxy": "http://localhost:3000",
   "dependencies": {
     "@testing-library/jest-dom": "^5.16.4",
     "@testing-library/react": "^13.3.0",
@@ -10,9 +11,13 @@
     "@types/node": "^16.11.41",
     "@types/react": "^18.0.14",
     "@types/react-dom": "^18.0.5",
+    "leaflet": "^1.8.0",
+    "normalize.css": "^8.0.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
+    "react-leaflet": "^4.0.0",
     "react-scripts": "5.0.1",
+    "react-transition-group": "^4.4.2",
     "typescript": "^4.7.4",
     "web-vitals": "^2.1.4"
   },
@@ -20,7 +25,8 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "lint": "npx eslint . --ext .ts,.js,.tsx --fix && stylelint \"src/**/*.(scss|css)\" --fix"
   },
   "eslintConfig": {
     "extends": [
@@ -39,5 +45,32 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "@types/leaflet": "^1.7.11",
+    "@types/react-transition-group": "^4.4.5",
+    "@typescript-eslint/eslint-plugin": "^5.29.0",
+    "@typescript-eslint/parser": "^5.29.0",
+    "eslint": "^8.18.0",
+    "eslint-config-airbnb": "^19.0.4",
+    "eslint-config-prettier": "^8.5.0",
+    "eslint-import-resolver-alias": "^1.1.2",
+    "eslint-import-resolver-typescript": "^2.7.1",
+    "eslint-loader": "^4.0.2",
+    "eslint-plugin-css-modules": "^2.11.0",
+    "eslint-plugin-import": "^2.26.0",
+    "eslint-plugin-jsx-a11y": "^6.5.1",
+    "eslint-plugin-prettier": "^4.0.0",
+    "eslint-plugin-react": "^7.30.1",
+    "eslint-plugin-react-hooks": "^4.6.0",
+    "eslint-plugin-security": "^1.5.0",
+    "eslint-plugin-unused-imports": "^2.0.0",
+    "prettier": "^2.7.1",
+    "style-loader": "^3.3.1",
+    "stylelint": "^14.9.1",
+    "stylelint-config-recommended-scss": "^6.0.0",
+    "stylelint-config-standard": "^26.0.0",
+    "stylelint-order": "^5.0.0",
+    "stylelint-scss": "^4.2.0"
   }
 }

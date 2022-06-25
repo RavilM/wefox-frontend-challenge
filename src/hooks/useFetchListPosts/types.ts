@@ -1,8 +1,10 @@
-export type TPayload = {
-    url: string;
-}
+import { TPosts } from '../../api/posts/types';
 
-export type TResult<TRecord> = {
-    data: TRecord;
-    refetch(): Promise<Response>;
-}
+type TUseFetchListPostsResult = {
+  data: TPosts;
+  refetch: VoidFunction;
+  loading: boolean;
+  isError: boolean;
+};
+
+export type TUseFetchListPosts = () => TUseFetchListPostsResult;

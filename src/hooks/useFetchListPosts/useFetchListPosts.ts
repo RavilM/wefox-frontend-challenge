@@ -1,31 +1,33 @@
-import {useState, useCallback, useEffect} from "react";
-import { TPayload, TResult } from './types';
-import {fetchListPosts} from "../../api/posts/fetchListPosts";
+import { useState, useCallback, useEffect } from 'react';
+import { fetchListPosts } from '../../api/posts/fetchListPosts';
+import { TPosts } from '../../api/posts/types';
+import { TUseFetchListPosts } from './types';
 
-export function useFetch<TRecord>({ url }: TPayload): any {
-    const [data, setData] = useState<TRecord>();
-    const [loading, setLoading] = useState(false);
+export const useFetchListPosts: TUseFetchListPosts = () => {
+  const [data, setData] = useState<TPosts>([]);
+  const [loading, setLoading] = useState(false);
+  const [isError, setIsError] = useState(false);
 
-    const fetch = useCallback(async () => {
-        setLoading(true);
+  const fetch = useCallback(async () => {
+    setLoading(true);
+    setIsError(false);
 
-        try {
-            const data = await fetchListPosts();
-            
-        } catch (e) {
+    try {
+      const response = await fetchListPosts();
+      const json = await response.json();
 
-        } finally {
-            setLoading(false);
-        }
+      setData(json);
+    } catch (error) {
+      console.error(`Error with useFetchListPosts: \n ${error}`);
+      setIsError(true);
+    } finally {
+      setLoading(false);
+    }
+  }, []);
 
+  useEffect(() => {
+    fetch();
+  }, []);
 
-    }, []);
-
-    useEffect(() => {
-
-    }, [])
-
-
-
-    return { data, refetch: fetch};
-}
+  return { data, loading, isError, refetch: fetch };
+};

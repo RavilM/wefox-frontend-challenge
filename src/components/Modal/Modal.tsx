@@ -1,30 +1,41 @@
-import React, {FC, useEffect, useLayoutEffect, useState} from 'react';
+import React, { FC, MouseEvent, useCallback, useEffect } from 'react';
 import ReactDOM from 'react-dom';
+import { CSSTransition } from 'react-transition-group';
 import { TProps } from './types';
+import './styles.css';
 
-const modalRoot = document.getElementById('modal-root') as HTMLElement;
+export const Modal: FC<TProps> = ({ children, show, onClose }) => {
+  const closeOnEscapeKeyDown = useCallback(
+    (event: KeyboardEvent) => {
+      if (event.key === 'Escape') {
+        onClose();
+      }
+    },
+    [onClose],
+  );
 
-export const AddModal: FC<TProps> = ({}) => {
-    const [rootElement, setRootElement] = useState<Element | null>(null)
-    // let rootElement: Element | null = null;
+  useEffect(() => {
+    document.body.addEventListener('keydown', closeOnEscapeKeyDown);
 
-    useLayoutEffect(() => {
-        setRootElement(document.createElement('div'))
-    }, []);
+    return function cleanup() {
+      document.body.removeEventListener('keydown', closeOnEscapeKeyDown);
+    };
+  }, [closeOnEscapeKeyDown]);
 
-    useEffect(() => {
-        // rootElement = document.createElement('div');
-        if (rootElement) modalRoot.appendChild(rootElement);
+  const handleStopPropagation = useCallback((event: MouseEvent) => {
+    event.stopPropagation();
+  }, []);
 
-        return () => {
-            if (rootElement) modalRoot.removeChild(rootElement);
-        }
-    }, [rootElement]);
-
-    if (rootElement) return ReactDOM.createPortal(
-        <div>modal</div>,
-        rootElement as Element
-    );
-
-    return null;
-}
+  return ReactDOM.createPortal(
+    <CSSTransition in={show} timeout={{ enter: 0, exit: 300 }} unmountOnExit>
+      {/* eslint-disable-next-line jsx-a11y/no-static-element-interactions */}
+      <div className="modal" onClick={onClose}>
+        {/* eslint-disable-next-line jsx-a11y/no-static-element-interactions */}
+        <div className="modal-container" onClick={handleStopPropagation}>
+          {children}
+        </div>
+      </div>
+    </CSSTransition>,
+    document.getElementById('modal-root') as Element,
+  );
+};

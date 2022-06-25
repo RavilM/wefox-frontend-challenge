@@ -1,23 +1,12 @@
-.modal {
-    position: fixed;
-    left: 0;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    background-color: rgba(0, 0, 0, 0.5);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    opacity: 0;
+.card-container {
+    width: 500px;
+    background-color: #fff;
     transition: all 0.3s ease-in-out;
-    pointer-events: none;
+    /*transform: translateY(-200px);*/
+    border-radius: 4px;
+    padding: 12px;
 }
 
-.modal.enter-done {
-    opacity: 1;
-    pointer-events: visible;
-}
-
-.modal.exit {
-    opacity: 0;
+.card-load-placeholder {
+    min-height: 400px;
 }

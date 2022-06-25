@@ -1,1 +1,1 @@
-export { useUpdatePost } from './useUpdatePost';
+export { useCreatePost } from './useCreatePost';

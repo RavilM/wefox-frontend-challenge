@@ -1,4 +1,7 @@
-import { currentPostEndpoint } from '../endpoints'
-import { TFetchPost } from './types';
+import { currentPostEndpoint } from '../endpoints';
+import { TDeletePost } from './types';
 
-export const fetchPost: TFetchPost = (id) => fetch(currentPostEndpoint(id))
+export const deletePost: TDeletePost = ({ id }) =>
+  fetch(currentPostEndpoint(id), {
+    method: 'DELETE',
+  });

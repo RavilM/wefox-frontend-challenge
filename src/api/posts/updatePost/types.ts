@@ -1,5 +1,8 @@
-import { TPost } from '../types';
+import {TChangePostData} from '../types';
 
-export type  TCreatePostPayload = Omit<TPost, 'id'>
+export type TUpdatePostPayload = {
+  id: number;
+  data: TChangePostData;
+};
 
-export  type  TCreatePost = (data: TCreatePostPayload) => Promise<Response>
+export type TUpdatePost = (data: TUpdatePostPayload) => Promise<Response>;

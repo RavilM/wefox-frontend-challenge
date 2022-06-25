@@ -1,17 +1,15 @@
-import { TPost } from '../../api/posts/types';
-import { TUpdatePostPayload } from '../../api/posts/updatePost';
+import { TDeletePostPayload } from '../../api/posts/deletePost';
 
-export type TUpdatePayload = TUpdatePostPayload & {
-  onSuccess(): void;
+export type TDeletePayload = TDeletePostPayload & {
+  onSuccess: VoidFunction;
 };
 
-export type TUpdate = (payload: TUpdatePayload) => void;
+export type TDelete = (payload: TDeletePayload) => void;
 
-type TUseUpdatePostResult = {
-  data?: TPost;
-  update: TUpdate;
+type TUseDeletePostResult = {
+  deleteFunc: TDelete;
   loading: boolean;
   isError: boolean;
 };
 
-export type TUseUpdatePost = () => TUseUpdatePostResult;
+export type TUseDeletePost = () => TUseDeletePostResult;
