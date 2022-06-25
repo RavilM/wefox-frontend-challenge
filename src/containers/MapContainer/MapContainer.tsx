@@ -1,34 +1,14 @@
-import React, { FC, useCallback, useMemo, useState } from 'react';
-import {
-  MapContainer,
-  Marker,
-  Popup,
-  TileLayer,
-  useMapEvents,
-} from 'react-leaflet';
+import React, { FC, useMemo } from 'react';
+import { MapContainer, Marker, Popup, TileLayer } from 'react-leaflet';
 import { LatLngExpression } from 'leaflet';
 import 'leaflet/dist/leaflet.css';
 import './styles.css';
 import { Card } from '../../components/Card';
-import { AddPost } from '../AddPost';
 import { TProps } from './types';
 
 const position: LatLngExpression = [51.505, -0.09];
 
-function MyComponent({ isAddMode }: { isAddMode: boolean }) {
-  const map = useMapEvents({
-    click: (event) => {
-      if (!isAddMode) return;
-
-      console.log(event);
-    },
-  });
-  return null;
-}
-
 export const Map: FC<TProps> = ({ data }) => {
-  const [isAddMode, setIsAddMode] = useState(false);
-
   const renderMarkers = useMemo(
     () =>
       data.map(
@@ -55,15 +35,6 @@ export const Map: FC<TProps> = ({ data }) => {
     [data],
   );
 
-  const handleClickAdd = useCallback(() => {
-    setIsAddMode((prevState) => !prevState);
-  }, []);
-
-  const buttonText = useMemo(
-    () => (isAddMode ? 'Cancel add new post' : 'Add new post'),
-    [isAddMode],
-  );
-
   return (
     <div className="map-container">
       <MapContainer center={position} zoom={3}>
@@ -72,9 +43,7 @@ export const Map: FC<TProps> = ({ data }) => {
           url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
         />
         {renderMarkers}
-        <MyComponent isAddMode={isAddMode} />
       </MapContainer>
-      <AddPost isMap />
     </div>
   );
 };
